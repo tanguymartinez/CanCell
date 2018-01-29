@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Split.ogg-5ea3849bb1c4af401eb223fc7a5bbad9.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Split.ogg"
+source_md5="d7d3d65867745c8c37f75a0618a6fd84"
+
+dest_files=[ "res://.import/Split.ogg-5ea3849bb1c4af401eb223fc7a5bbad9.oggstr" ]
+dest_md5="db331ed7e6a33b998afae3b279d46139"
+
+[params]
+
+loop=false
+loop_offset=0

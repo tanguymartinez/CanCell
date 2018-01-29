@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/cells_01.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Timer.gd" type="Script" id=3]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform float p = 15.0;
+uniform float A = 0.015;
+
+void fragment(){
+	COLOR = texture(TEXTURE, vec2(UV.x+cos(UV.x*p+TIME+UV.y*p)*A, UV.y+cos(UV.y*p+TIME+UV.y*p)*A));
+//	COLOR = texture(TEXTURE, UV);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/p = null
+shader_param/A = null
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 29.208
+
+[node name="Enemy" type="RigidBody2D" groups=[
+"Enemies",
+]]
+
+position = Vector2( 444.483, 161.239 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+can_split = true
+follows = true
+split_time = 5
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+material = SubResource( 2 )
+position = Vector2( 0.347748, -2.24565 )
+rotation = -0.000286726
+scale = Vector2( 0.188163, 0.188163 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 3 )
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]
+
+

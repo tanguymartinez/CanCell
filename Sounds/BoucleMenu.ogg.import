@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BoucleMenu.ogg-61c186f3e8ee43e926d2633c1bb95cb0.oggstr"
+
+[deps]
+
+source_file="res://Sounds/BoucleMenu.ogg"
+source_md5="e380e83927d268f3a6322b9435e7badf"
+
+dest_files=[ "res://.import/BoucleMenu.ogg-61c186f3e8ee43e926d2633c1bb95cb0.oggstr" ]
+dest_md5="40c9cd367ef760564016f2ae74bb5736"
+
+[params]
+
+loop=true
+loop_offset=0

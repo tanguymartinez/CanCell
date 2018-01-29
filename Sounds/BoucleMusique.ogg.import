@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BoucleMusique.ogg-78e6d920e9e0bae5b918c72e9bf9d915.oggstr"
+
+[deps]
+
+source_file="res://Sounds/BoucleMusique.ogg"
+source_md5="50a806b006fd2dac0ef8072e62e7b115"
+
+dest_files=[ "res://.import/BoucleMusique.ogg-78e6d920e9e0bae5b918c72e9bf9d915.oggstr" ]
+dest_md5="3e56adafb68bfe85034a0bcf9de49d47"
+
+[params]
+
+loop=true
+loop_offset=0

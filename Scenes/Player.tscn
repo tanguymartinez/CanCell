@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/AnimPlayer/cells_05_01.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/AnimPlayer/cells_05_02.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/AnimPlayer/cells_05_03.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/AnimPlayer/cells_05_04.png" type="Texture" id=6]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+void fragment(){
+	float p = 15.0;
+	float A = 0.015;
+	COLOR = texture(TEXTURE, vec2(UV.x+cos(UV.x*p+TIME+UV.y*p)*A, UV.y+cos(UV.y*p+TIME+UV.y*p)*A));
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+
+[sub_resource type="Shader" id=6]
+
+code = "shader_type canvas_item;
+
+void fragment(){
+	float p = 15.0;
+	float A = 0.015;
+	COLOR = texture(TEXTURE, vec2(UV.x+cos(UV.x*p+TIME+UV.y*p)*A, UV.y+cos(UV.y*p+TIME+UV.y*p)*A));
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+
+render_priority = 0
+shader = SubResource( 6 )
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 31.6132
+
+[node name="Player" type="RigidBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 2
+mass = 1.0
+friction = 0.7
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Linear", "Pickable", "collision" ]
+vel = 5
+other_player = null
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+visible = false
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+material = SubResource( 5 )
+position = Vector2( -1.42001, -0.631119 )
+scale = Vector2( 0.19, 0.19 )
+frames = SubResource( 4 )
+animation = "default"
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+shape = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="3"]
+
+visible = false
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 1
+
+
